@@ -1,3 +1,5 @@
+import testdata.constants as dataVal
+
 import pytest
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome",
@@ -10,7 +12,7 @@ def test_setup(request):
         driver=webdriver.Chrome()
     elif browser=='ff':
         driver=webdriver.Firefox()
-    driver.get("http://localhost:8080/login?from=%2F")
+    driver.get(dataVal.URL)
     driver.maximize_window()
     driver.implicitly_wait(30)
     request.cls.driver = driver
